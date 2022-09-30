@@ -23,7 +23,6 @@ function Room() {
   const [webcamState, setWebcamState] = useState<boolean>(false);
   const [recordingState, setRecordingState] = useState<boolean>(false);
   const [screenshareState, setScreenshareState] = useState<boolean>(false);
-  const [streamingState, setStreamingState] = useState<boolean>(false);
   const [peers, setPeers] = useState<HuddleTypes.IPeer[]>([]);
   const [consumerStreams, setConsumerStreams] = useState<IConsumerStreams>({
     video: [],
@@ -36,7 +35,7 @@ function Room() {
   const joinRoomBtn = useRef<any>(null);
 
   const config: HuddleTypes.HuddleClientConfig = {
-    apiKey: "API-KEY-HERE",
+    apiKey: "i4pzqbpxza8vpijQMwZsP1H7nZZEH0TN3vR4NdNS",
     roomId: "C132",
     peerId: "Rick" + Math.floor(Math.random() * 4000),
     displayName: "Rick Sanchez",
@@ -335,30 +334,7 @@ function Room() {
       console.error(error);
     }
   };
-  const startStreaming = async () => {
-    if (!huddle) return;
-    try {
-      const status: boolean = await huddle.startStreaming();
-      if (status) {
-        console.log("Streaming successfully started");
-        setStreamingState(true);
-      }
-    } catch (error: any) {
-      console.error(error);
-    }
-  };
-  const stopStreaming = async () => {
-    if (!huddle) return;
-    try {
-      const status: boolean = await huddle.stopStreaming();
-      if (status) {
-        console.log("Streaming successfully stopped");
-        setStreamingState(false);
-      }
-    } catch (error: any) {
-      console.error(error);
-    }
-  };
+
   return (
     <div className="App">
       <div className="me-ports">
@@ -385,9 +361,7 @@ function Room() {
         <button onClick={recordingState ? stopRecording : startRecording}>
           {recordingState ? "Disable Recording" : "Enable Recording"}
         </button>
-        <button onClick={streamingState ? stopStreaming : startStreaming}>
-          {streamingState ? "Disable Streaming" : "Enable Streaming"}
-        </button>
+
         {/* <button onClick={toggleWebcam}>Toggle Webcam</button> */}
       </div>
 

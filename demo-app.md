@@ -68,7 +68,7 @@ function Room() {
   const joinRoomBtn = useRef(null);
 
   const config = {
-    apiKey: "your-api-key-here",
+    apiKey: "i4pzqbpxza8vpijQMwZsP1H7nZZEH0TN3vR4NdNS",
     roomId: "C132",
     peerId: "Rick" + Math.floor(Math.random() * 4000),
     displayName: "Rick Sanchez",
